@@ -152,7 +152,7 @@ form {
                 <td><%= player.getTeam().getName() %></td>
                 <td>
                     <!-- Update Button -->
-                    <form action="getupdateid" method="post" style="display: inline;">
+                    <form action="/api/players/getupdateid" method="post" style="display: inline;">
                         <input type="hidden" name="id" value="<%= player.getId() %>">
                         <button type="submit" class="btn-update">Update</button>
                     </form>

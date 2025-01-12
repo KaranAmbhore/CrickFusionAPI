@@ -136,7 +136,7 @@ form {
                 <td><%= matches.get(i).getLocation() %></td>
                 <td><%= matches.get(i).getTeam1().getName() %></td>
                 <td><%= matches.get(i).getTeam2().getName() %></td>
-              <   <td>
+                <td>
                     <!-- Update Button -->
                     <form action="matchupdateid" method="post" style="display: inline;">
                         <input type="hidden" name="id" value="<%= matches.get(i).getId() %>">

@@ -169,15 +169,15 @@ a.button:hover {
 <div class="container">
     <h1>Make Your Choice</h1>
     <div class="button-group">
-        <a href="register" class="button">Add New Player</a>
-        <a href="all" class="button">Get All Players</a>
-        <a href="byid" class="button">Get Player By Name</a>
-        <a href="team" class="button">Add Team</a>
-        <a href="allteams" class="button">Get All Teams</a>
-        <a href="teambyname" class="button">Get Team By Name</a>
-        <a href="addmatch" class="button">Add Match</a>
-        <a href="allmatches" class="button">Get All Matches</a>
-        <a href="getmatch" class="button">Get Matches by Date</a>
+        <a href="/api/players/register" class="button">Add New Player</a>
+        <a href="/api/players/all" class="button">Get All Players</a>
+        <a href="/api/players/byid" class="button">Get Player By Name</a>
+        <a href="/api/teams/team" class="button">Add Team</a>
+        <a href="/api/teams/allteams" class="button">Get All Teams</a>
+        <a href="/api/teams/teambyname" class="button">Get Team By Name</a>
+        <a href="/api/matches/addmatch" class="button">Add Match</a>
+        <a href="/api/matches/allmatches" class="button">Get All Matches</a>
+        <a href="/api/matches/getmatch" class="button">Get Match by Date or Venue</a>
     </div>
 </div>
 

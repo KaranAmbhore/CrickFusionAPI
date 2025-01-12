@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Add New Match</title>
+<title>Registration Page</title>
 <style type="text/css">
 	<style>
 * Reset styles */
@@ -50,7 +50,7 @@ label {
 
 /* Input fields */
 input[type="text"],
-input[type="number"],
+input[type="email"],
 input[type="password"] {
     width: 100%;
     padding: 10px;
@@ -92,32 +92,22 @@ input[type="submit"]:hover {
 <body>
 
 		<div class="container">
-			<form id="form-1" action="addmatchhandler" method="post">
+			<form id="form-1" action="handleregister" method="post">
 			
-				<h1>Add New Match</h1>
-				<label for="input-1">Match Date:</label>
-				<input id="date" placeholder="Enter Date" type="text" name="matchDate" value="${match.matchDate}" required/>
+				<h1>Registration Form</h1>
+				<label for="input-1">UserName:</label>
+				<input id="username" placeholder="Enter Username" type="text" name="username" required/>
 				
-				<label for="input-1">Location :</label>
-				<input id="location" placeholder="Enter location" type="text" name="location" value="${match.location}" required/>
+				<label for="input-1">Email:</label>
+				<input id="email" placeholder="Enter Email" type="email" name="email" required/>
 				
-				<label for="input-1">First Team:</label>
-				<input id="firstteam" placeholder="Enter First Team Id" type="number" name="team1.id" value="${team1id}" required/>
+				<label for="input-1">Password:</label>
+				<input id="password" placeholder="Enter password" type="password" name="password" required/>
 				
-				<label for="input-1">Second Team:</label>
-				<input id="sec-team" placeholder="Enter Second Team Id" type="number" name="team2.id" value="${team2id}" required/>
-			<!-- 	
-				<label for="input-1">Team Name:</label>
-				<input id="teamname" placeholder="Enter Team Name" type="text" name="team.name"/> -->
-				
-				<input type="submit" value="Add Match" id="submit"/>
-				
-				
-				${zero} 
-				${present}
-				${success}
+				<input type="submit" value="Register" id="submit"/>
+				${emptyfield}
 			</form>
-		<a href ="/api/ipl/user/choice" style="cursor: pointer;"><button>Back</button></a>
+		
 		 </div>
 
 </body>

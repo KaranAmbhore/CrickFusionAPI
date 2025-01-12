@@ -196,12 +196,12 @@ form {
 						</td>
 						<td>
 							<!-- Update Button -->
-							<form action="#" method="post" style="display: inline;">
+							<form action="getupdateteamid" method="post" style="display: inline;">
 								<input type="hidden" name="id"
 									value="<%=teams.get(i).getId()%>">
 								<button type="submit" class="btn-update">Update</button>
 							</form> <!-- Delete Button -->
-							<form action="#" method="post" style="display: inline;">
+							<form action="deleteteamhandler" method="post" style="display: inline;">
 								<input type="hidden" name="id"
 									value="<%=teams.get(i).getId()%>">
 								<button type="submit" class="btn-delete">Delete</button>

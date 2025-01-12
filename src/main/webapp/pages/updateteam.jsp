@@ -117,13 +117,13 @@ input[type="submit"]:hover {
 </head>
 <body>
 		<div class="container">
-			<form id="form-1" action="updateteamhandler" method="post">
+			<form id="form-1" action="/api/teams/updateteamhandler" method="post">
 			
 				<h1>Edit Team Details</h1>
 				
 				
 				<label for="input-1">Team ID:</label>
-				<input id="id" placeholder="Enter Id" type="number" name="id" value="${team.id}" required/>
+				<input readonly="readonly" id="id" placeholder="Enter Id" type="number" name="id" value="${team.id}" required/>
 			
 				<label for="input-1">Team Name:</label>
 				<input id="name" placeholder="Enter Name" type="text" name="name" value="${team.name}" required/>

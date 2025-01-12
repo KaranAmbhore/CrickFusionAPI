@@ -163,7 +163,7 @@ form {
 	<div class="match-form">
 		<form id="form-1" action="searchmatch" method="post">
 			<label for="name">Enter Date :</label> <input id="name"
-				placeholder="Enter Date " type="text" name="input" /> <input
+				placeholder="Enter Date or Venue " type="text" name="input" value="${input}" /> <input
 				type="submit" value="Search Match" id="submit" />
 
 		</form>

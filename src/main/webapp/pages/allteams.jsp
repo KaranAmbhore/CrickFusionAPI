@@ -115,6 +115,7 @@ form {
 	%>
 
 				<div class="container">
+				<h1 style="text-align: center;">All Teams</h1>
     <table id="table-1">
         <thead>
             <tr>
@@ -125,7 +126,7 @@ form {
             </tr>
         </thead>
         <tbody>
-        <% if(!teams.isEmpty()){ %>
+        <% if(teams != null && !teams.isEmpty()){ %>
             <% for (int i = 0; i < teams.size(); i++) { %>
             <tr>
                 <td><%= teams.get(i).getId() %></td>
@@ -162,6 +163,7 @@ form {
             %>
         </tbody>
     </table>
+    ${exception}
 </div>
 		
 
