@@ -65,9 +65,10 @@ public class UserService {
 
 		MimeMessage mimeMessage = javaMailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
+		helper.setFrom("KaranAmbhore");
 		helper.setTo(email);
 		helper.setSubject(emailInfo.getSubject());
-		helper.setText(emailInfo.getBody() + otp+". "+emailInfo.getBody2());
+		helper.setText(emailInfo.getBody() + otp + ". " + emailInfo.getBody2());
 //		helper.setText(otp);/
 
 		javaMailSender.send(mimeMessage);
@@ -124,6 +125,29 @@ public class UserService {
 		} else {
 			model.addAttribute("notsame", "Password Doesn't Matches. Try Again..");
 			return "resetpassword";
+		}
+
+	}
+
+	public User getUserByUsername(String username) {
+
+		if (username != null) {
+			return userDao.getUserByUsername(username);
+		} else {
+
+			return null;
+		}
+
+	}
+
+	public String editUserDetails(User user, Model model) {
+
+		if (user != null) {
+			return userDao.editUserDetails(user, model);
+
+		} else {
+
+			return null;
 		}
 
 	}

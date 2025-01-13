@@ -94,9 +94,9 @@
 			<input id="input-1" placeholder="Enter New Password" type="text" name="newpass" />
 
 			<label for="input-2">Confirm:</label>
-			<input id="input-2" placeholder="Confirm New password" type="text" name="confirm" />
+			<input id="input-2" placeholder="Confirm New password" type="password" name="confirm" />
 
-			<input type="submit" value="Change Password" id="button-1" />
+			<input type="submit" value="Change Password" id="button-1" /><br>
 
 			<!-- Display error messages -->
 			<div class="error">${notsame}</div>

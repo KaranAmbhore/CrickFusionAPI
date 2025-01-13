@@ -74,4 +74,39 @@ public class UserDao {
 
 	}
 
+	public User getUserByUsername(String username) {
+		Session session = sessionFactory.openSession();
+		Criteria criteria = session.createCriteria(User.class);
+		criteria.add(Restrictions.eq("username", username));
+		List<User> user = criteria.list();
+		for (User user2 : user) {
+			
+			return user2;
+		}
+		return null;
+	}
+
+	public String editUserDetails(User user, Model model) {
+		Session session = sessionFactory.openSession();
+		User existingUser = getUserByUsername(user.getUsername());
+		
+		if(existingUser != null) {
+			System.err.println("User Id from user>>>> "+user.getId());
+			System.err.println("User Id from getuserbyUsername method>>>> "+existingUser.getId());
+			System.err.println("User Id from getuserbyUsername method>>>> "+existingUser.getEmail());
+			System.err.println("User Id from getuserbyUsername method>>>> "+existingUser.getUsername());
+			existingUser.setUsername(user.getUsername());
+			existingUser.setEmail(user.getEmail());
+			existingUser.setPassword(user.getPassword());
+			session.update(existingUser);
+			session.beginTransaction().commit();
+			model.addAttribute("success", "Details Updated Successfully..");
+			return "redirect:/api/ipl/user/profile";
+		}else {
+			model.addAttribute("error", "Cannot update user..");
+			return "profile";
+		}
+
+	}
+
 }

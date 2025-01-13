@@ -6,8 +6,7 @@
 <meta charset="UTF-8">
 <title>Registration Page</title>
 <style type="text/css">
-	<style>
-* Reset styles */
+/* Reset styles */
 * {
     margin: 0;
     padding: 0;
@@ -68,8 +67,10 @@ input:focus {
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
+
 /* Submit button */
-input[type="submit"] {
+input[type="submit"],
+#signin {
     width: 100%;
     padding: 12px;
     background-color: #007bff;
@@ -80,10 +81,14 @@ input[type="submit"] {
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block; /* Makes the link behave like a button */
+    text-align: center; /* Ensures proper alignment of text inside */
 }
 
 /* Submit button hover effect */
-input[type="submit"]:hover {
+input[type="submit"]:hover,
+#signin:hover {
     background-color: #0056b3;
 }
 </style>
@@ -91,24 +96,29 @@ input[type="submit"]:hover {
 </head>
 <body>
 
-		<div class="container">
-			<form id="form-1" action="handleregister" method="post">
-			
-				<h1>Registration Form</h1>
-				<label for="input-1">UserName:</label>
-				<input id="username" placeholder="Enter Username" type="text" name="username" required/>
-				
-				<label for="input-1">Email:</label>
-				<input id="email" placeholder="Enter Email" type="email" name="email" required/>
-				
-				<label for="input-1">Password:</label>
-				<input id="password" placeholder="Enter password" type="password" name="password" required/>
-				
-				<input type="submit" value="Register" id="submit"/>
-				${emptyfield}
-			</form>
+		<jsp:include page="navbar.jsp"></jsp:include>
+
 		
-		 </div>
+    <div class="container">
+        <form id="form-1" action="handleregister" method="post">
+        
+            <h1>Registration Form</h1>
+            <label for="input-1">UserName:</label>
+            <input id="username" placeholder="Enter Username" type="text" name="username" required/>
+            
+            <label for="input-1">Email:</label>
+            <input id="email" placeholder="Enter Email" type="email" name="email" required/>
+            
+            <label for="input-1">Password:</label>
+            <input id="password" placeholder="Enter password" type="password" name="password" required/>
+            
+            <input type="submit" value="Register" id="submit"/><br> <br>
+            
+            <a href="/api/ipl/user/" id="signin">Sign In</a>
+            ${emptyfield}
+        </form>
+    
+     </div>
 
 </body>
 </html>

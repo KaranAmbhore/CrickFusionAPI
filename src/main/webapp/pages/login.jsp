@@ -119,6 +119,9 @@
 </style>
 </head>
 <body>
+
+		<jsp:include page="navbar.jsp"></jsp:include>
+
     <div class="container">
     	<h1>Login Form</h1>
         <form id="form-1" action="loginhandle" method="post">
@@ -130,7 +133,6 @@
 
             <a href="/api/ipl/user/forgot">Forgot Password?</a>
             <input type="submit" value="Login" id="button-1" /> <br>
-			
 				<a href="/api/ipl/user/registration" id="signup" style="text-align: center"> Sign Up</a>
             <!-- Error and success messages -->
             <div class="message error">${error}</div>
