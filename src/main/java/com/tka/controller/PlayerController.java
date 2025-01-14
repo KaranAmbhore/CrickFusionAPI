@@ -4,17 +4,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tka.entity.Player;
+import com.tka.entity.PlayerDetails;
 import com.tka.service.PlayerService;
 
 @Controller
@@ -24,42 +22,8 @@ public class PlayerController {
     @Autowired
     private PlayerService playerService;
 
-//    @PostMapping
-//    public Player createPlayer(@RequestBody Player player) {
-//        return playerService.createPlayer(player);
-//    }
-//
-//    @GetMapping("/{id}")
-//    public Player getPlayerById(@PathVariable Long id) {
-//        return playerService.getPlayerById(id);
-//    }
-//
-//    @GetMapping("all")
-//    public List<Player> getAllPlayers() {
-//        return playerService.getAllPlayers();
-//    }
-//    
-//    @PutMapping("update/{id}")
-//    public Object updatePlayer(@RequestBody Player player, @PathVariable Long id) {
-//    	
-//    	return playerService.updatePlayer(player,id);
-//    }
-//    
-//    @DeleteMapping("delete/{id}")
-//    public String deletePlayer(@PathVariable Long id) {
-//    	return playerService.deletePlayer(id);
-//    }
-//    
-//    @GetMapping("name/{name}")
-//    public Object getPlayerByName(@PathVariable String name) {
-//    	
-//    	return playerService.getPlayerByName(name);
-//    }
-//    
-//    @GetMapping("pattern/{pattern}")
-//    public List<Player> getPlayersByPattern(@PathVariable String pattern) {
-//    	return playerService.getPlayersByPattern(pattern);
-//    }
+    
+    
     
     // Methods from user controller...
     
@@ -104,6 +68,7 @@ public class PlayerController {
 	
 	@PostMapping("getupdateid")
 	public String getUpateId(@RequestParam Long id,Model model) {
+		System.err.println("Update player Id >>>"+id);
 		Player player = playerService.getPlayerById(id);
 		model.addAttribute("player", player);
 		return "update";
@@ -133,5 +98,47 @@ public class PlayerController {
 			return playerService.deletePlayer(id,model);	
 	}
 	
-    
+	@GetMapping("playerdetails")
+    public String getAllPlayersDetails(Model model) {
+    	List<PlayerDetails>players = playerService.getAllPlayerDetails();
+    	model.addAttribute("players", players);
+    	return "playerdetails";
+    }
+	
+	@PostMapping("getupdateplayerid")
+	public String getUpatePlayerId(@RequestParam Long id,Model model) {
+		System.err.println("Update player Id >>>"+id);
+		PlayerDetails player = playerService.getPlayerDetailsById(id);
+		System.err.println(player);
+		model.addAttribute("player", player);
+		return "updateplayer";
+		
+	}
+	
+	@PostMapping("updateplayerhandler")
+	public String updatePlayerDetails(@ModelAttribute PlayerDetails player,Model model) {
+		return playerService.updatePlayerDetails(player,model);
+	}
+	
+
+	@GetMapping("addnewplayer")
+	public String addNewPlayer() {
+		return "addnewplayer";
+	}
+	
+	@PostMapping("addnewplayerhandler")
+	public String addNewPlayer(@ModelAttribute PlayerDetails player,Model model) {
+		System.err.println(player);
+		return playerService.addNewPlayerDetails(player,model);
+	}
+	
+	@PostMapping("deleteplayerhandler")
+	public String deletePlayerHandler(@RequestParam Long id,RedirectAttributes redirectAttributes) {
+		System.out.println("Player ID To delete :: "+id);
+		return playerService.deletePlayerDetails(id,redirectAttributes);
+	}
+	@PostMapping("playerdetailsbyname")
+	public String getPlayerDetailsByName(@RequestParam String name,  Model model) {
+		return playerService.getPlayerDetailsByName(name, model);
+	}
 }

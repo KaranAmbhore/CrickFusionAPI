@@ -29,7 +29,7 @@ public class UserController {
 	}
 
 	@PostMapping("loginhandle")
-	public String loginHandler(@ModelAttribute User user, Model model,HttpSession session) {
+	public String loginHandler(@ModelAttribute User user, Model model, HttpSession session) {
 		boolean correct = userService.loginHandler(user);
 		if (correct) {
 
@@ -44,19 +44,6 @@ public class UserController {
 			return "login";
 		}
 	}
-//	@PostMapping("loginhandle")
-//	public String loginHandler(@ModelAttribute User user, Model model) {
-//		boolean correct = userService.loginHandler(user);
-//		if (correct) {
-//			
-//			model.addAttribute("name", user.getUsername());
-//			return "choose";
-//		} else {
-//			model.addAttribute("error", "Invalid Username or Password");
-//			model.addAttribute("name", user.getUsername());
-//			return "login";
-//		}
-//	}
 
 	@GetMapping("registration")
 	public String registerUser() {
@@ -103,10 +90,6 @@ public class UserController {
 
 	@GetMapping("profile")
 	public String getProfilePage(@ModelAttribute User existingUser) {
-		
-		System.err.println("Data under profile page : "+existingUser.getUsername());
-		System.err.println("Data under profile page : "+existingUser.getId());
-		
 		return "profilepage";
 	}
 
@@ -140,24 +123,25 @@ public class UserController {
 		}
 
 	}
-	
-	
+
 	@GetMapping("logout")
 	public String logOutImpl(HttpSession httpSession) {
-		
+
 		httpSession.invalidate();
-		
+
 		return "login";
 	}
-	
+
 	@GetMapping("playerschoice")
 	public String getPlayersChoice() {
 		return "getplayerschoice";
 	}
+
 	@GetMapping("teamschoice")
 	public String getTeamsChoice() {
 		return "teamschoice";
 	}
+
 	@GetMapping("matcheschoice")
 	public String getMatchesChoice() {
 		return "matcheschoice";

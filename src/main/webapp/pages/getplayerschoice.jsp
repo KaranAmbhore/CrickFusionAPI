@@ -100,10 +100,12 @@ a.button:hover {
 	<div class="container">
 		<h1>Make Your Choice</h1>
 
+			<a href="/api/players/addnewplayer" class="button">Add New Player</a>
 			<a href="/api/players/register" class="button">Add New Player</a> 
 			<a href="/api/players/all" class="button">Get All Players</a> 
 			<a href="/api/players/byid" class="button">Get Player By Name</a>
-
+			<a href="/api/players/playerdetails" class="button">Player Statistics</a>
+			
 	</div>
 
 </body>

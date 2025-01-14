@@ -1,19 +1,16 @@
 package com.tka.controller;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tka.entity.Player;
@@ -24,119 +21,73 @@ import com.tka.service.TeamService;
 @RequestMapping("api/teams")
 public class TeamController {
 
-    @Autowired
-    private TeamService teamService;
+	@Autowired
+	private TeamService teamService;
 
-//    @PostMapping
-//    public Team createTeam(@RequestBody Team team) {
-//        return teamService.createTeam(team);
-//    }
+	@GetMapping("/{id}")
+	public Team getTeamById(@PathVariable Long id) {
+		return teamService.getTeamById(id);
+	}
 //
-    @GetMapping("/{id}")
-    public Team getTeamById(@PathVariable Long id) {
-        return teamService.getTeamById(id);
-    }
-//
-//    @GetMapping("all")
-//    public List<Team> getAllTeams() {
-//        return teamService.getAllTeams();
-//    }
-//    
-//    @PutMapping("update/{id}")
-//    public Object updateTeam(@RequestBody Team team ,@PathVariable Long id) {
-//    	
-//    	return teamService.updateTeam(team,id);
-//    }
-//    
-//    @DeleteMapping("delete/{id}")
-//    public String deleteTeam(@PathVariable Long id) {
-//    	
-//    	return teamService.deleteTeam(id);
-//    }
-//    
-//    @GetMapping("name/{name}")
-//    public Object getTeamByName(@PathVariable String name) {
-//    	
-//    	return teamService.getTeamByName(name);
-//    }
-//    
-//    @GetMapping("pattern/{pattern}")
-//    public List<Team> getTeamsByPattern(@PathVariable String pattern) {
-//    	return teamService.getTeamsByPattern(pattern);
-//    }
-//    
-//    
-//    @GetMapping("teamplr/{id}")
-//    public List<Player> playersInTeam(@PathVariable Long id) {
-//    	return teamService.playersInTeam(id);
-//    }
-//    
-//    @GetMapping("teamplrs/{name}")
-//    public Object playerInTeams(@PathVariable String name) {
-//    	return teamService.playersInTeams(name);
-//    }
-    
-    @GetMapping("team")
+
+	@GetMapping("team")
 	public String addTeam() {
 		return "addteam";
 	}
-	
+
 	@PostMapping("addteam")
 	public String addTeam(@ModelAttribute Team team, Model model) {
-		return teamService.addTeam(team,model);
+		return teamService.addTeam(team, model);
 	}
-	
+
 	@GetMapping("allteams")
 	public String getAllTeams(Model model) {
 		return teamService.getAllTeams(model);
 	}
-	
+
 	@GetMapping("playersbyteam")
 	public String getTeamById() {
 		return "playersbyteamid";
 	}
-	
+
 	@PostMapping("getteamid")
-	public String getTeamID(@RequestParam Long id,Model model) {
-		
-		List<Player> players =  teamService.playersInTeam(id);
+	public String getTeamID(@RequestParam Long id, Model model) {
+
+		List<Player> players = teamService.playersInTeam(id);
 		model.addAttribute("players", players);
 		return "playersbyteamid";
 	}
-	
+
 	@GetMapping("teambyname")
 	public String getTeamByName() {
 		return "teambyname";
 	}
-	
+
 	@PostMapping("teambynamehandler")
-	public String getTeamByName(@RequestParam String name,Model model) {
-		return teamService.getTeamByName(name,model);
+	public String getTeamByName(@RequestParam String name, Model model) {
+		return teamService.getTeamByName(name, model);
 	}
-	
-	
-	
+
 	@GetMapping("updateteam")
 	public String updateTeamPage() {
 		return "updateteam";
 	}
-	
+
 	@PostMapping("getupdateteamid")
 	public String getUpateTeamId(@RequestParam Long id, Model model) {
 		Team team = teamService.getTeamById(id);
 		model.addAttribute("team", team);
 		return "updateteam";
 	}
-	
+
 	@PostMapping("updateteamhandler")
-	public String updateTeam(@ModelAttribute Team team , Model model) {
-		return teamService.updateTeam(team,model);
-	}
-	
-	@PostMapping("deleteteamhandler")
-	public String deleteTeamById(@RequestParam Long id,Model model,RedirectAttributes redirectAttributes) {
-		return teamService.deleteTeam(id,model,redirectAttributes);
+	public String updateTeam(@ModelAttribute Team team, Model model) {
+		return teamService.updateTeam(team, model);
 	}
 
-    
+	@PostMapping("deleteteamhandler")
+	public String deleteTeamById(@RequestParam Long id, Model model, RedirectAttributes redirectAttributes) {
+		return teamService.deleteTeam(id, model, redirectAttributes);
+	}
+
 }

@@ -1,0 +1,125 @@
+@charset "UTF-8";
+
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f4f4f9;
+	margin: 0;
+	padding: 20px;
+}
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	justify-content: center;
+}
+
+.search-player {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.search-player form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}
+
+.search-player input[type="text"] {
+	width: 250px;
+	padding: 8px 12px;
+	font-size: 14px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.search-player input[type="submit"] {
+	padding: 8px 15px;
+	font-size: 14px;
+	color: #fff;
+	background-color: #007bff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.search-player input[type="submit"]:hover {
+	background-color: #0056b3;
+}
+
+.player-card {
+	margin-top: 40px;
+	background: #fff;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	width: 280px;
+	text-align: center;
+	padding: 20px;
+	transition: transform 0.3s ease;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.player-card:hover {
+	transform: scale(1.05);
+}
+
+.player-card img {
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;
+	margin-bottom: 15px;
+	border: 2px solid #007bff;
+}
+
+.player-name {
+	font-size: 18px;
+	font-weight: bold;
+	color: #333;
+	margin-bottom: 10px;
+}
+
+.player-details {
+	font-size: 14px;
+	color: #666;
+	margin-bottom: 10px;
+	line-height: 1.6;
+}
+
+.stat-title {
+	font-weight: bold;
+	color: #007bff;
+	margin-bottom: 5px;
+}
+
+.actions {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 15px;
+}
+
+.actions button {
+	background-color: #007bff;
+	color: white;
+	border: none;
+	padding: 8px 12px;
+	border-radius: 5px;
+	font-size: 14px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.actions button:hover {
+	background-color: #0056b3;
+}
+
+.actions .btn-delete {
+	background-color: #dc3545;
+}
+
+.actions .btn-delete:hover {
+	background-color: #a71d2a;
+}

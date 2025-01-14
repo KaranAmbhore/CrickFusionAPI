@@ -1,3 +1,4 @@
+<%@page import="com.tka.entity.User"%>
 <%@page import="com.tka.entity.Player"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -114,6 +115,7 @@ form {
 	ArrayList<Player> players = (ArrayList<Player>) request.getAttribute("players");
 	%>
 
+	<% User user = (User)session.getAttribute("existinguser"); %>
 
 				<div class="container">
     <table id="table-1">
@@ -135,6 +137,8 @@ form {
                 <td><%= players.get(i).getName() %></td>
                 <td><%= players.get(i).getAge() %></td>
                 <td><%= players.get(i).getTeam().getName() %></td>
+               
+               <% if(user.getAutority().equalsIgnoreCase("admin")){ %>
                 <td>
                    
                     <form action="getupdateid" method="post" style="display: inline;">
@@ -148,6 +152,9 @@ form {
                         <button type="submit" class="btn-delete">Delete</button>
                     </form>
                 </td>
+                <%
+                }
+               %>
             </tr>
             <% }
             

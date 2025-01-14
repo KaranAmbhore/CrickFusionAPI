@@ -1,3 +1,4 @@
+<%@page import="com.tka.entity.User"%>
 <%@page import="com.tka.entity.Matches"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -111,7 +112,6 @@ form {
 
 	<%  ArrayList<Matches> matches =  (ArrayList<Matches>) request.getAttribute("matches"); %>
 
-
 					<div class="container">
     <table id="table-1">
         <thead>
@@ -156,6 +156,7 @@ form {
             %>
         </tbody>
     </table >
+    
 </div>
 	
 		

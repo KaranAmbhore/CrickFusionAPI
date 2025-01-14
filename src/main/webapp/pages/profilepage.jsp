@@ -139,8 +139,6 @@ button:hover {
 		<% User existingUser =(User)session.getAttribute("existinguser"); %>
 
 
-	<%-- <jsp:include page="navbar.jsp"></jsp:include>
- --%>
 	<div class="profile-img">
 
 		<img alt="Profile Picture" src="/images/profile.jpg">

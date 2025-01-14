@@ -19,7 +19,39 @@ public class Team {
     @JsonManagedReference
     private List<Player> players;
 
-    // Getters and Setters
+    private String teamLogo;
+    
+    public Team() {
+		// TODO Auto-generated constructor stub
+	}
+   
+
+	public Team(Long id, String name, List<Player> players, String teamLogo) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.players = players;
+		this.teamLogo = teamLogo;
+	}
+
+	
+	
+	
+	public String getTeamLogo() {
+		return teamLogo;
+	}
+
+
+
+
+	public void setTeamLogo(String teamLogo) {
+		this.teamLogo = teamLogo;
+	}
+
+
+
+
+	// Getters and Setters
     public Long getId() {
         return id;
     }
@@ -46,7 +78,7 @@ public class Team {
 
 	@Override
 	public String toString() {
-		return "Team [id=" + id + ", name=" + name + ", players=" + players + "]";
+		return "Team [id=" + id + ", name=" + name + ", players=" + players + ", teamLogo=" + teamLogo + "]";
 	}
     
     

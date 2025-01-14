@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.tka.entity.Matches;
-import com.tka.entity.Player;
 import com.tka.entity.Team;
 import com.tka.exceptions.MatchNotFoundException;
 

@@ -139,11 +139,17 @@ body {
 		</ul>
 		<% if(user != null){ %>
 		<div class="profile">
-			<a href="profile"><img id="image-1" alt="Profile Icon"
+			<a href="/api/ipl/user/profile"><img id="image-1" alt="Profile Icon"
 				src="/images/profile-icon.jpg"  /> <%= user.getUsername() %> </a>
-			<%-- 			<a href="profile"><%=user.getUsername()%> </a> --%>
-	<% } %>
-		</div>
+				</div>
+	<% }else { %>
+			<div class="profile">
+			<a href="/api/ipl/user/"> Login</a>
+				</div>
+			<% 
+	}
+			%>
+		
 	</nav>
 
 

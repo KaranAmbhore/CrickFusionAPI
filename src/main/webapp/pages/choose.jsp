@@ -1,3 +1,4 @@
+<%@page import="com.tka.entity.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -217,21 +218,35 @@ a.button:hover {
 
 		<jsp:include page="navbar.jsp"></jsp:include>
 
+		<% User user = (User)session.getAttribute("existinguser"); %>
+	
+
 <div class="profile-section">
     <img src="/images/ipl-logo.jpg" alt="Profile Image" class="profile-img">
-    <h1>Welcome, ${name}</h1>
+   
+    <h1>Welcome,  <% if(user != null){ %><%= user.getUsername() %></h1>
+    <% } %>
 </div>
 
 <div class="container">
     <h1>Make Your Choice</h1>
+    
+  
     <div class="button-group">
         <a href="/api/players/register" class="button">Add New Player</a>
         <a href="/api/players/all" class="button">Get All Players</a>
         <a href="/api/players/byid" class="button">Get Player By Name</a>
+     	
+     	<% if( user != null &&  user.getAutority().equalsIgnoreCase("admin")){ %>
         <a href="/api/teams/team" class="button">Add Team</a>
+       <% } %>
         <a href="/api/teams/allteams" class="button">Get All Teams</a>
         <a href="/api/teams/teambyname" class="button">Get Team By Name</a>
+     	<% if( user!= null &&  user.getAutority().equalsIgnoreCase("admin")){ %>
         <a href="/api/matches/addmatch" class="button">Add Match</a>
+            <% 
+     	}
+     	%>
         <a href="/api/matches/allmatches" class="button">Get All Matches</a>
         <a href="/api/matches/getmatch" class="button">Get Match by Date or Venue</a>
     </div>

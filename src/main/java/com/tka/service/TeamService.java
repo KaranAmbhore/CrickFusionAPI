@@ -18,37 +18,11 @@ public class TeamService {
 	@Autowired
 	private TeamDao teamDao;
 
-//	public Team createTeam(Team team) {
-//		return teamDao.save(team);
-//	}
 
 	public Team getTeamById(Long id) {
 		return teamDao.findById(id);
 
 	}
-//
-//	public List<Team> getAllTeams() {
-//		return teamDao.findAll();
-//	}
-//
-//	public Object updateTeam(Team team, Long id) {
-//
-//		return teamDao.updateTeam(team, id);
-//	}
-//
-//	public String deleteTeam(Long id) {
-//		return teamDao.deleteTeam(id);
-//	}
-//
-//	public Object getTeamByName(String name) {
-//		Team team = teamDao.getTeamByName(name);
-//		if (team != null) {
-//			return team;
-//		} else {
-//			return "Team Not Found.";
-//
-//		}
-//	}
 
 	public List<Team> getTeamsByPattern(String pattern) {
 		List<Team> list = teamDao.getTeamsByPattern(pattern);

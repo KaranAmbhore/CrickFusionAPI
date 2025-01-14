@@ -23,32 +23,36 @@ public class User {
 	private String username;
 	private String email;
 	private String password;
+	private String autority;
 
-	
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-	public User(Long id, String username, String email, String password) {
+
+	public User(Long id, String username, String email, String password, String autority) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.email = email;
 		this.password = password;
+		this.autority = autority;
 	}
 
+	public String getAutority() {
+		return autority;
+	}
 
-	
+	public void setAutority(String autority) {
+		this.autority = autority;
+	}
+
 	public String getEmail() {
 		return email;
 	}
 
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 
 	public Long getId() {
 		return id;
@@ -76,10 +80,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", email=" + email + ", password=" + password + "]";
+		return "User [id=" + id + ", username=" + username + ", email=" + email + ", password=" + password
+				+ ", autority=" + autority + "]";
 	}
 
-
-	
-	
 }

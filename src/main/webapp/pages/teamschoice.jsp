@@ -1,3 +1,4 @@
+<%@page import="com.tka.entity.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -97,10 +98,17 @@ a.button:hover {
 
 		<jsp:include page="navbar.jsp"></jsp:include>
 
+					<% User user = (User)session.getAttribute("existinguser"); %>
+		
+
 	<div class="container">
 		<h1>Make Your Choice</h1>
-
+		<% 	if(user != null){ %>
+		     	<% if(user.getAutority().equalsIgnoreCase("admin")){ %>
 		 <a href="/api/teams/team" class="button">Add Team</a>
+       <%  } 
+       
+       }%>
         <a href="/api/teams/allteams" class="button">Get All Teams</a>
         <a href="/api/teams/teambyname" class="button">Get Team By Name</a>
 	</div>
