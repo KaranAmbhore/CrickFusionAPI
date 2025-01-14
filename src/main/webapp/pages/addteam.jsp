@@ -96,6 +96,9 @@ input[type="submit"]:hover {
 				<h1>Add New Team</h1>
 				<label for="input-1">Team Name:</label>
 				<input id="name" placeholder="Enter Name" type="text" name="name" value="${name}" required/>
+
+				<label for="input-1">Team Logo:</label>
+				<input id="name" placeholder="Enter Team Logo" type="text" name="teamLogo"  required/>
 				
 				<input type="submit" value="Add Team" id="submit"/>
 				

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.tka.dao.TeamDao;
 import com.tka.entity.Player;
 import com.tka.entity.Team;
 import com.tka.service.TeamService;
@@ -24,6 +25,9 @@ public class TeamController {
 	@Autowired
 	private TeamService teamService;
 
+	@Autowired
+	private TeamDao teamDao;
+	
 	@GetMapping("/{id}")
 	public Team getTeamById(@PathVariable Long id) {
 		return teamService.getTeamById(id);
@@ -90,4 +94,10 @@ public class TeamController {
 		return teamService.deleteTeam(id, model, redirectAttributes);
 	}
 
+	@GetMapping("teamsdata")
+	public String getAllTeamsData(Model model) {
+		List<Team> teams = teamDao.findAll();
+		model.addAttribute("teams", teams);
+		return "teamdata";
+	}
 }

@@ -92,8 +92,8 @@ body {
 }
 
 .navbar .profile img {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%; /* Make the image circular */
     border: 2px solid white;
     object-fit: cover; /* Maintain aspect ratio */
@@ -140,7 +140,7 @@ body {
 		<% if(user != null){ %>
 		<div class="profile">
 			<a href="/api/ipl/user/profile"><img id="image-1" alt="Profile Icon"
-				src="/images/profile-icon.jpg"  /> <%= user.getUsername() %> </a>
+				src="/images/profile.jpg"  /> <%= user.getUsername() %> </a>
 				</div>
 	<% }else { %>
 			<div class="profile">
