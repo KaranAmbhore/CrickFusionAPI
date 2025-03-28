@@ -138,7 +138,7 @@ form {
                 <td><%= players.get(i).getAge() %></td>
                 <td><%= players.get(i).getTeam().getName() %></td>
                
-               <% if(user.getAutority().equalsIgnoreCase("admin")){ %>
+               <% if( user != null && user.getAutority().equalsIgnoreCase("admin")){ %>
                 <td>
                    
                     <form action="getupdateid" method="post" style="display: inline;">

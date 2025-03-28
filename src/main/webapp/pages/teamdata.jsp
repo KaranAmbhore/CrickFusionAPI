@@ -1,19 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ page import="com.tka.entity.Team"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Teams</title>
-    <link rel="stylesheet" type="text/css" href="/styles/teamdata.css">
+<title>Teams</title>
+<link rel="stylesheet" type="text/css" href="/styles/teamdata.css">
 </head>
 <body>
 
-    <jsp:include page="navbar.jsp"></jsp:include>
+	<jsp:include page="navbar.jsp"></jsp:include>
 
-    <% List<Team> teams = (List<Team>) request.getAttribute("teams"); %>
-    <div class="team-container">
+	<%
+	List<Team> teams = (List<Team>) request.getAttribute("teams");
+	%>
+	<%--  <div class="team-container">
         <% if (teams != null) { %>
             <% for (Team team : teams) { %>
                 <div class="team-card">
@@ -27,6 +29,41 @@
                 </div>
             <% } %>
         <% } %>
-    </div>
+    </div> --%>
+
+	<jsp:include page="navbar.jsp"></jsp:include>
+
+	<div class="team-container">
+		<%
+		if (teams != null) {
+		%>
+		<%
+		for (Team team : teams) {
+		%>
+		<a href="/api/teams/getid/<%=team.getId()%>" class="team-link">
+			<div class="team-card">
+				<img src="<%=team.getTeamLogo()%>"
+					alt="<%=team.getName()%> Logo" class="team-logo">
+				<div class="team-info">
+					<h3 class="team-name"><%=team.getName()%></h3>
+					<p>
+						<strong>Total Matches:</strong>
+						
+					<p>
+						<strong>Wins:</strong>
+						
+				</div>
+			</div>
+		</a>
+		<%
+		}
+		%>
+		<%
+		}
+		%>
+	</div>
+
+
+
 </body>
 </html>

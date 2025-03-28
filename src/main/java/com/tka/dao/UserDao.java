@@ -109,4 +109,30 @@ public class UserDao {
 
 	}
 
+	public List<User> getAllUsers() {
+
+		Session session = sessionFactory.openSession();
+		Criteria criteria = session.createCriteria(User.class);
+		
+		return criteria.list();
+	}
+	
+	public User getUserById(Long id) {
+		
+		Session session = sessionFactory.openSession();
+		User user = session.get(User.class, id);
+		return user;
+	}
+
+	public String makeAdmin(Long userId) {
+		Session session = sessionFactory.openSession();
+		
+		User user = getUserById(userId);
+		System.out.println(user);
+		user.setAutority("admin");
+		session.saveOrUpdate(user);
+		session.beginTransaction().commit();
+		return "redirect:/api/ipl/user/all-users";
+	}
+
 }

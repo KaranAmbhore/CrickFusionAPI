@@ -13,14 +13,19 @@
 </head>
 <body>
 
+		<% String name = ""; %>
+			<% String playerName = (String ) request.getAttribute("playername"); %>
+			<% if(playerName != null){ %>
+		<% name = playerName.trim(); %>
+		<%} %>
 					<% User user = (User)session.getAttribute("existinguser"); %>
+		    <% ArrayList<PlayerDetails> players = (ArrayList<PlayerDetails>) request.getAttribute("players"); %>
 		
-	
 		<jsp:include page="navbar.jsp"></jsp:include>
 
 		<div class="search-player" style="margin-top: 100px;" >
-			<form id="form-1" action="playerdetailsbyname" method="post">
-				<input id="input-1" placeholder="Enter Player Name" type="text" name="name"  />
+			<form id="form-1" action="playerdetailsbyname" method="get">
+				<input id="input-1" placeholder="Enter Player Name" type="text" name="name" value="<%= name %>" />
 				<input type="submit" value="Search Player" id="button-1"/> <br> <br>
 			<p style="color: red">${availablenot}</p>
 			
@@ -28,7 +33,6 @@
 			
 		</div>
 
-    <% ArrayList<PlayerDetails> players = (ArrayList<PlayerDetails>) request.getAttribute("players"); %>
     <div class="container">
         <% if (players != null) { %>
             <% for (PlayerDetails player : players) { %>

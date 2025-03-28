@@ -111,6 +111,7 @@ a.button:hover {
        }%>
         <a href="/api/teams/allteams" class="button">Get All Teams</a>
         <a href="/api/teams/teambyname" class="button">Get Team By Name</a>
+        <a href="/api/teams/teamsdata" class="button">Team Details</a>
 	</div>
 
 </body>

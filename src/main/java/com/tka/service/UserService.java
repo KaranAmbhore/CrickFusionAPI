@@ -1,6 +1,7 @@
 package com.tka.service;
 
 import java.security.SecureRandom;
+import java.util.List;
 
 import javax.mail.internet.MimeMessage;
 
@@ -150,6 +151,15 @@ public class UserService {
 			return null;
 		}
 
+	}
+
+	public List<User> getAllUsers() {
+		return userDao.getAllUsers();
+	}
+
+	public String makeAdmin(Long userId) {
+		
+		return userDao.makeAdmin(userId);
 	}
 
 }

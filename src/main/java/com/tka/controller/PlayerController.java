@@ -137,8 +137,12 @@ public class PlayerController {
 		System.out.println("Player ID To delete :: "+id);
 		return playerService.deletePlayerDetails(id,redirectAttributes);
 	}
-	@PostMapping("playerdetailsbyname")
+	@GetMapping("playerdetailsbyname")
 	public String getPlayerDetailsByName(@RequestParam String name,  Model model) {
+		System.err.println("Player Name From detail page ::"+name);
+		String playerName = name.trim();
+		System.err.println("Player Name From detail After trim ::"+playerName);
+		model.addAttribute("playername", playerName);
 		return playerService.getPlayerDetailsByName(name, model);
 	}
 }

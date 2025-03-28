@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.tka.dao.TeamDao;
 import com.tka.entity.Player;
+import com.tka.entity.PlayerDetails;
 import com.tka.entity.Team;
 import com.tka.service.TeamService;
 
@@ -27,7 +28,7 @@ public class TeamController {
 
 	@Autowired
 	private TeamDao teamDao;
-	
+
 	@GetMapping("/{id}")
 	public Team getTeamById(@PathVariable Long id) {
 		return teamService.getTeamById(id);
@@ -100,4 +101,18 @@ public class TeamController {
 		model.addAttribute("teams", teams);
 		return "teamdata";
 	}
+
+	@GetMapping("getid/{id}")
+	public String getTeamsInformationPage(@PathVariable Long id, Model model) {
+		System.err.println("Team ID :::" + id);
+
+		Team team = teamService.getTeamById(id);
+		List<PlayerDetails> players =  teamService.getPlayerDetailsByTeamId(id, model);
+		System.err.println(team);
+		model.addAttribute("team", team);
+		model.addAttribute("players", players);
+		return "teaminfo";
+	}
+	
+	
 }

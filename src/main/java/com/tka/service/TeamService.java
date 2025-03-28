@@ -10,6 +10,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.tka.dao.TeamDao;
 import com.tka.entity.Matches;
 import com.tka.entity.Player;
+import com.tka.entity.PlayerDetails;
 import com.tka.entity.Team;
 
 @Service
@@ -121,5 +122,10 @@ public class TeamService {
 			model.addAttribute("exception","Cannot Delete Team. Team is Present in Match." );
 			return "redirect:/api/teams/allteams";
 		}
+	}
+	
+	public List<PlayerDetails> getPlayerDetailsByTeamId(Long id,Model model) {
+			return teamDao.playersDetailsByTeam(id);
+		
 	}
 }

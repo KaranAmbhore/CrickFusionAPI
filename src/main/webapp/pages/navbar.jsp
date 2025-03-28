@@ -128,14 +128,15 @@ body {
 	%>
 
 
-	<!-- Navigation Bar -->
 	<nav class="navbar">
-		<!-- Navigation Links -->
 		<ul class="nav-links">
 			<li><a href="/api/ipl/user/choice">Home</a></li>
 			<li><a href="/api/ipl/user/playerschoice">Player</a></li>
 			<li><a href="/api/ipl/user/teamschoice">Teams</a></li>
 			<li><a href="/api/ipl/user/matcheschoice">Matches</a></li>
+		<% if( user != null && user.getAutority().equalsIgnoreCase("admin")){ %>
+			<li><a href="/api/ipl/user/all-users">All Users</a> </li>
+			<% } %>
 		</ul>
 		<% if(user != null){ %>
 		<div class="profile">

@@ -112,6 +112,8 @@ input[type="submit"]:hover,
             <label for="input-1">Password:</label>
             <input id="password" placeholder="Enter password" type="password" name="password" required/>
             
+			<input id="input-1" placeholder="Text" type="hidden" value="user" name="autority" />
+            
             <input type="submit" value="Register" id="submit"/><br> <br>
             
             <a href="/api/ipl/user/" id="signin">Sign In</a>

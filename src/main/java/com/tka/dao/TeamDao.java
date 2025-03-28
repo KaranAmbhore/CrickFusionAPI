@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.tka.entity.Player;
+import com.tka.entity.PlayerDetails;
 import com.tka.entity.Team;
 
 @Repository
@@ -94,29 +95,37 @@ public class TeamDao {
 		return list;
 
 	}
-	
-	public List<Player> playersInTeam(Long id){
+
+	public List<Player> playersInTeam(Long id) {
 		Session session = sessionFactory.openSession();
 		Team team = session.get(Team.class, id);
-		if(team != null) {
-			
+		if (team != null) {
+
 			return team.getPlayers();
-		}else {
-			
+		} else {
+
 			return null;
 		}
-		
+
 	}
 
 	public List<Player> playersInTeams(String name) {
-		Session session =sessionFactory.openSession();
+		Session session = sessionFactory.openSession();
 		Criteria criteria = session.createCriteria(Team.class);
 		criteria.add(Restrictions.eq("name", name));
-		
+
 		List<Team> list = criteria.list();
 		for (Team object : list) {
 			return object.getPlayers();
 		}
 		return null;
+	}
+
+	public List<PlayerDetails> playersDetailsByTeam(Long id) {
+		Session session = sessionFactory.openSession();
+		Team team = session.get(Team.class, id);
+		Criteria criteria = session.createCriteria(PlayerDetails.class);
+		criteria.add(Restrictions.eq("team.id", id));
+		return criteria.list();
 	}
 }
